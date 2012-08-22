@@ -19,6 +19,8 @@ scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation")
 
+testOptions += Tests.Argument(TestFrameworks.JUnit, "-v")
+
 /* entry point */
 mainClass in (Compile, packageBin) := Some("com.example.Main")
 
@@ -28,7 +30,9 @@ mainClass in (Compile, run) := Some("com.example.Main")
 libraryDependencies ++= Seq (
   "org.scalaz" %% "scalaz-core" % "7.0.0-M2",
   "org.scalaz" %% "scalaz-effect" % "7.0.0-M2",
-  "org.scalacheck" %% "scalacheck" % "1.9" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.9" % "test",
+  "junit" % "junit" % "4.8" % "test->default",
+  "com.novocode" % "junit-interface" % "0.9-RC3" % "test"
 )
 
 /* improve REPL */
